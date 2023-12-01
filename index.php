@@ -1,17 +1,21 @@
 <?php
-// This function will take an array of sequential numbers that are in a random order with 1 number missing from the list and it will find the missing number.
+// This function will take an array of sequential numbers that are in a random order
+// with 1 number missing from the array and it will find the missing number.
 function findMissingNumber($array) {
     // Find the minimum and maximum values in the array
     $min = min($array);
     $max = max($array);
 
-    // Calculate the expected sum of the sequence using the formula for the sum of an arithmetic series
+    // Calculate the expected total sum of the numbers in the array by adding the
+    // last number with the first number then multiply half the amount of how many
+    // numners found in the array. Note: you need to add one to the count because the
+    // first key is 0
     $expectedSum = ($min + $max) * (count($array) + 1) / 2;
 
-    // Calculate the actual sum of the elements in the array
+    // Calculate the actual total sum of the numbers in the array
     $actualSum = array_sum($array);
 
-    // Find the missing number
+    // Find the missing number by subtracting the expected sum by the actual sum
     $missingNumber = $expectedSum - $actualSum;
 
     return $missingNumber;
